@@ -1,6 +1,6 @@
 [package]
 name = "trimesh"
-version = "0.1.2" # change with html_root_url in lib.rs
+version = "0.1.3" # change with html_root_url in lib.rs
 edition = "2021"
 authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
 
@@ -33,3 +33,6 @@ home = { version = "=0.5.5" } # cc(1.0.79)/bindgen(0.65.1) requires home(0.5.5)
 [build-dependencies]
 cc = "=1.0.79"
 bindgen = "=0.65.1"
+
+[package.metadata.docs.rs]
+rustc-args = ["--cfg", "docsrs"]

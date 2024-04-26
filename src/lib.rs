@@ -1,10 +1,9 @@
-#![doc(html_root_url = "https://docs.rs/trimesh/0.1.2")]
+#![doc(html_root_url = "https://docs.rs/trimesh/0.1.3")]
 //! Polyhedron on the ODE (Open Dynamics Engine) trimesh for Rust
 //!
 
 pub mod polyhedron;
 
-/*
 /// tests
 #[cfg(test)]
 mod tests {
@@ -42,4 +41,3 @@ mod tests {
     assert_eq!(c60c.ph.fvp.faceCount, 12 + 20);
   }
 }
-*/
