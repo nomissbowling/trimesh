@@ -3,7 +3,7 @@
 
 use anyslot::anyslot::*;
 use num::Float;
-use fullerene;
+
 use crate::polyhedron::*;
 
 /// Icosahedron
@@ -26,6 +26,6 @@ impl<F: Float> Icosahedron<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::Icosahedron::new(r).with_uv(tf));
+    self.ph.from_phf(&fullerene::Icosahedron::new(r).ph.with_uv(tf));
   }
 }

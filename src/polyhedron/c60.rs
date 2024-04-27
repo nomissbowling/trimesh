@@ -3,7 +3,7 @@
 
 use anyslot::anyslot::*;
 use num::Float;
-use fullerene;
+
 use crate::polyhedron::*;
 
 /// C60
@@ -24,8 +24,9 @@ impl<F: Float> TBridgeGlobal for C60<F> {
 /// C60
 impl<F: Float> C60<F> {
   /// make trimeshvi and convexfvp
+  /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::C60::new(r).with_uv(tf));
+    self.ph.from_phf(&fullerene::C60::new(r).ph.with_uv(tf));
   }
 }
 
@@ -49,6 +50,6 @@ impl<F: Float> C60Center<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::C60Center::new(r).with_uv(tf));
+    self.ph.from_phf(&fullerene::C60Center::new(r).ph.with_uv(tf));
   }
 }

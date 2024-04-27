@@ -3,7 +3,7 @@
 
 use anyslot::anyslot::*;
 use num::Float;
-use fullerene;
+
 use crate::polyhedron::*;
 
 /// Dodecahedron
@@ -24,8 +24,9 @@ impl<F: Float> TBridgeGlobal for Dodecahedron<F> {
 /// Dodecahedron
 impl<F: Float> Dodecahedron<F> {
   /// make trimeshvi and convexfvp
+  /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::Dodecahedron::new(r).with_uv(tf));
+    self.ph.from_phf(&fullerene::Dodecahedron::new(r).ph.with_uv(tf));
   }
 }
 
@@ -49,6 +50,6 @@ impl<F: Float> DodecahedronCenter<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::DodecahedronCenter::new(r).with_uv(tf));
+    self.ph.from_phf(&fullerene::DodecahedronCenter::new(r).ph.with_uv(tf));
   }
 }

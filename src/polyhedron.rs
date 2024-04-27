@@ -10,6 +10,10 @@ pub use dodecahedron::*;
 pub mod c60;
 pub use c60::*;
 
+pub mod tetra;
+pub mod pipe;
+pub mod pin;
+
 use oyk::ode::*;
 
 use num::Float;
