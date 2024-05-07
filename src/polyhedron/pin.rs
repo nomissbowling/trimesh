@@ -25,7 +25,7 @@ impl<F: Float> TBridgeGlobal for Pin<F> {
 impl<F: Float + std::fmt::Debug> Pin<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
-  pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::ph_faces::pin::Pin::new(r).ph.with_uv(tf));
+  pub fn setup(&mut self, r: F, p: u16, q: u16, tf: bool) {
+    self.ph.from_phf(&ph_faces::pin::Pin::new(r, p, q).ph.with_uv(tf));
   }
 }

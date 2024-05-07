@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/trimesh/0.2.3")]
+#![doc(html_root_url = "https://docs.rs/trimesh/0.3.0")]
 //! Polyhedron on the ODE (Open Dynamics Engine) trimesh for Rust
 //!
 
@@ -11,6 +11,7 @@ mod tests {
     Icosahedron,
     Dodecahedron, DodecahedronCenter,
     C60, C60Center,
+    torus::{Torus, RTorus, Ring},
     pipe::{Tube, HalfPipe},
     tetra::Tetra};
   use anyslot::anyslot::*;
@@ -18,12 +19,13 @@ mod tests {
   /// [-- --nocapture] [-- --show-output]
   #[test]
   fn test_polyhedron() {
-    let tf = true;
+    let tf = false;
     let mut icosa = Icosahedron::<f32>::void();
     let mut dodeca = Dodecahedron::<f32>::void();
     let mut dodecac = DodecahedronCenter::<f32>::void();
     let mut c60 = C60::<f32>::void();
     let mut c60c = C60Center::<f32>::void();
+
     assert_eq!(icosa.setup(1.0, tf), ());
     assert_eq!(dodeca.setup(1.0, tf), ());
     assert_eq!(dodecac.setup(1.0, tf), ());
@@ -44,24 +46,45 @@ mod tests {
   }
 
   #[test]
+  fn test_torus() {
+    let tf = false;
+    let mut torus = Torus::<f64>::void();
+    assert_eq!(torus.setup(2.0, 0.5, 6, 6, tf), ());
+  }
+
+  #[test]
+  fn test_rtorus() {
+    let tf = false;
+    let mut rtorus = RTorus::<f64>::void();
+    assert_eq!(rtorus.setup(2.0, 0.5, 12, 6, tf), ());
+  }
+
+  #[test]
+  fn test_ring() {
+    let tf = false;
+    let mut ring = Ring::<f64>::void();
+    assert_eq!(ring.setup(2.0, 0.5, 0.8, 12, 6, tf), ());
+  }
+
+  #[test]
   fn test_tube() {
     let tf = false;
     let mut tube = Tube::<f64>::void();
-    assert_eq!(tube.setup(0.5, 0.4, 1.0, 12, tf), ());
+    assert_eq!(tube.setup(0.5, 0.4, 1.0, 6, tf), ());
   }
 
   #[test]
   fn test_halfpipe() {
     let tf = false;
     let mut halfpipe = HalfPipe::<f64>::void();
-    assert_eq!(halfpipe.setup(4.71239, 0.5, 0.4, 1.0, 12, tf), ()); // 3pi/2
+    assert_eq!(halfpipe.setup(4.712388980, 0.5, 0.4, 1.0, 6, tf), ()); // 3pi/2
   }
 
   #[test]
   fn test_pin() {
-    let tf = true;
+    let tf = false;
     let mut pin = polyhedron::pin::Pin::<f64>::void();
-    assert_eq!(pin.setup(1.0, tf), ());
+    assert_eq!(pin.setup(0.4, 8, 6, tf), ());
   }
 
   #[test]

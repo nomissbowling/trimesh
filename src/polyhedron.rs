@@ -11,12 +11,21 @@ pub mod c60;
 pub use c60::*;
 
 pub mod tetra;
+pub mod cube; // drawstuff(box) dxlib(cube)
+pub mod octa;
+pub mod sphere; // drawstuff dxlib
+pub mod cylinder; // drawstuff
+pub mod capsule; // drawstuff dxlib
+pub mod cone; // dxlib
+pub mod torus;
 pub mod pipe;
 pub mod pin;
+pub mod revolution;
 
 use oyk::ode::*;
 
 use num::Float;
+use ph_faces;
 use fullerene::{self, TUV};
 
 /// Polyhedron
@@ -83,14 +92,16 @@ impl<F: Float> Polyhedron<F> {
     let mut cf = 0; // count faces (not use fi * f.len()) c60 contains 5 and 6
     for (_fi, f) in phf.iter().enumerate() {
       for _k in 0..4 { self.planes.push(0.0); } // flatten (auto set later)
-      for (vi, v) in f.iter().enumerate() {
-        let nv = v.len();
+      for (ti, t) in f.iter().enumerate() {
+        let nv = t.len();
         self.polygons.push(nv as u32); // now all triangle
-        for (ii, (p, uv)) in v.iter().enumerate() {
+        for (vi, ftvi) in t.iter().enumerate() {
+          // println!("{} {} {}", fi, ti, vi);
+          let (p, uv) = ftvi.puv();
           let p = fullerene::f_to_f64(p);
           let _uv = fullerene::f_to_f64(uv);
           for k in 0..3 { self.vtx.push(p[k]); } // flatten
-          let j = (cf + vi) * nv + ii;
+          let j = (cf + ti) * nv + vi;
           self.indices.push(j as dTriIndex);
           self.polygons.push(j as u32); // now all triangle
         }

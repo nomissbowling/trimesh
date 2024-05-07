@@ -1,4 +1,4 @@
-//! Trimesh and Convex Tetra
+//! Trimesh and Convex Octa
 //!
 
 use anyslot::anyslot::*;
@@ -6,26 +6,26 @@ use num::Float;
 
 use crate::polyhedron::*;
 
-/// Tetra
+/// Octa
 #[derive(Debug, Clone)]
-pub struct Tetra<F: Float> {
+pub struct Octa<F: Float> {
   /// polyhedron
   pub ph: Polyhedron<F>
 }
 
-/// TBridgeGlobal for Tetra
-impl<F: Float> TBridgeGlobal for Tetra<F> {
+/// TBridgeGlobal for Octa
+impl<F: Float> TBridgeGlobal for Octa<F> {
   /// constructor
   fn void() -> Self {
-    Tetra::<F>{ph: Polyhedron::<F>::void()}
+    Octa::<F>{ph: Polyhedron::<F>::void()}
   }
 }
 
-/// Tetra
-impl<F: Float + std::fmt::Debug> Tetra<F> {
+/// Octa
+impl<F: Float + std::fmt::Debug> Octa<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&ph_faces::tetra::Tetra::new(r).ph.with_uv(tf));
+    self.ph.from_phf(&ph_faces::octa::Octa::new(r).ph.with_uv(tf));
   }
 }

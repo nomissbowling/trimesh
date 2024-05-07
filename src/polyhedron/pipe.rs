@@ -29,9 +29,9 @@ impl<F: Float + std::fmt::Debug> Tube<F> {
   /// - l: length
   /// - q: quality
   /// - tf: true: on the one texture, false: texture each face
-  pub fn setup(&mut self, odm: F, idm: F, l: F, q: u8, tf: bool) {
-    let tube_e = fullerene::ph_faces::pipe::Tube::new(odm, idm, l, q);
-    self.ph.from_phf(&tube_e.ph.with_uv(tf));
+  pub fn setup(&mut self, odm: F, idm: F, l: F, q: u16, tf: bool) {
+    let e = ph_faces::pipe::Tube::new(odm, idm, l, q);
+    self.ph.from_phf(&e.ph.with_uv(tf));
   }
 }
 
@@ -59,8 +59,8 @@ impl<F: Float + std::fmt::Debug> HalfPipe<F> {
   /// - l: length
   /// - q: quality
   /// - tf: true: on the one texture, false: texture each face
-  pub fn setup(&mut self, a: F, odm: F, idm: F, l: F, q: u8, tf: bool) {
-    let hp_e = fullerene::ph_faces::pipe::HalfPipe::new(a, odm, idm, l, q);
-    self.ph.from_phf(&hp_e.ph.with_uv(tf));
+  pub fn setup(&mut self, a: F, odm: F, idm: F, l: F, q: u16, tf: bool) {
+    let e = ph_faces::pipe::HalfPipe::new(a, odm, idm, l, q);
+    self.ph.from_phf(&e.ph.with_uv(tf));
   }
 }
