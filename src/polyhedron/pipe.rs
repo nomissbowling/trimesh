@@ -51,7 +51,7 @@ impl<F: Float> TBridgeGlobal for HalfPipe<F> {
 }
 
 /// HalfPipe
-impl<F: Float + std::fmt::Debug> HalfPipe<F> {
+impl<F: Float + std::fmt::Debug + std::iter::Sum> HalfPipe<F> {
   /// make trimeshvi and convexfvp
   /// - a: arc angle
   /// - odm: outer diameter

@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Pin<F> {
 }
 
 /// Pin
-impl<F: Float + std::fmt::Debug> Pin<F> {
+impl<F: Float + std::fmt::Debug + std::iter::Sum> Pin<F> {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, p: u16, q: u16, tf: bool) {

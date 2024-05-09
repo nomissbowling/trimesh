@@ -1,6 +1,6 @@
 [package]
 name = "trimesh"
-version = "0.3.1" # change with html_root_url in lib.rs
+version = "0.3.2" # change with html_root_url in lib.rs
 edition = "2021"
 authors = ["nomissbowling <nomissbowling@yahoo.co.jp>"]
 
@@ -18,7 +18,7 @@ readme = "README.md"
 #build = "build.rs"
 
 [dependencies]
-polyhedron-faces = { version = "0.3" }
+polyhedron-faces = { version = "0.3" } # "0.3.1"
 Fullerene = { version = "0.3" } # "0.3.0"
 
 anyslot = { version = "0.1" }
