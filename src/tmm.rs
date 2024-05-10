@@ -110,7 +110,7 @@ pub use tms;
 macro_rules! tmg {
   ($tm: ident, $hm: ident, $k: expr) => {{
     let key = format!("{}_{}", stringify!($hm), $k);
-    $tm.$hm.get_mut(&key).expect(key.as_str())
+    (key.clone(), $tm.$hm.get_mut(&key).expect(key.as_str()))
   }}
 }
 pub use tmg;

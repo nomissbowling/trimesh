@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Tetra<F> {
 }
 
 /// Tetra
-impl<F: Float + std::fmt::Debug + std::iter::Sum> Tetra<F> {
+impl<F: Float + std::fmt::Debug> Tetra<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
