@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Cube<F> {
 }
 
 /// Cube
-impl<F: Float + std::fmt::Debug> Cube<F> {
+impl<F: Float + std::fmt::Debug> Cube<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
@@ -46,7 +46,7 @@ impl<F: Float> TBridgeGlobal for CubeCenter<F> {
 }
 
 /// CubeCenter
-impl<F: Float + std::fmt::Debug> CubeCenter<F> {
+impl<F: Float + std::fmt::Debug> CubeCenter<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {

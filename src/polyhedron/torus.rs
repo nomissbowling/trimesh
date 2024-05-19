@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Torus<F> {
 }
 
 /// Torus
-impl<F: Float + std::fmt::Debug + std::iter::Sum> Torus<F> {
+impl<F: Float + std::fmt::Debug> Torus<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, r: F, p: u16, q: u16, tf: bool) {
@@ -46,7 +46,7 @@ impl<F: Float> TBridgeGlobal for RTorus<F> {
 }
 
 /// RTorus
-impl<F: Float + std::fmt::Debug + std::iter::Sum> RTorus<F> {
+impl<F: Float + std::fmt::Debug> RTorus<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, r: F, p: u16, q: u16, tf: bool) {
@@ -70,7 +70,7 @@ impl<F: Float> TBridgeGlobal for Ring<F> {
 }
 
 /// Ring
-impl<F: Float + std::fmt::Debug + std::iter::Sum> Ring<F> {
+impl<F: Float + std::fmt::Debug> Ring<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, d: F, e: F, p: u16, q: u16, tf: bool) {

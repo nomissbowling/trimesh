@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Cone<F> {
 }
 
 /// Cone
-impl<F: Float + std::fmt::Debug> Cone<F> {
+impl<F: Float + std::fmt::Debug> Cone<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, h: F, q: u16, tf: bool) {

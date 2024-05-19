@@ -43,6 +43,8 @@ pub struct Polyhedron<F: Float> {
   pub tmv: trimeshvi,
   /// fvp (create from planes, vtx, polygons)
   pub fvp: convexfvp,
+  /// volume
+  pub vol: F,
   /// ratio
   pub r: F
 }
@@ -53,13 +55,14 @@ impl<F: Float> Polyhedron<F> {
   fn void() -> Self {
     let tmv = Polyhedron::<F>::void_tmv();
     let fvp = Polyhedron::<F>::void_fvp();
+    let vol = <F>::from(0).unwrap();
     let r = <F>::from(1).unwrap();
     Polyhedron::<F>{
       indices: vec![],
       planes: vec![],
       vtx: vec![],
       polygons: vec![],
-      tmv, fvp, r}
+      tmv, fvp, vol, r}
   }
   /// make void tmv (this should be implemented trait for trimeshvi)
   /// - vtx n * 3 flat (keep lifetime)
@@ -121,6 +124,8 @@ impl<F: Float> Polyhedron<F> {
 */
     self.tmv = self.to_trimeshvi();
     self.fvp = self.to_convexfvp();
+//    self.vol = <F>::from(0).unwrap(); // must re calc
+//    self.r = <F>::from(1).unwrap(); // must re calc
   }
   /// to trimeshvi
   fn to_trimeshvi(&mut self) -> trimeshvi {

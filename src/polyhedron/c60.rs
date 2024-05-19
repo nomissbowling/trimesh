@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for C60<F> {
 }
 
 /// C60
-impl<F: Float> C60<F> {
+impl<F: Float + std::fmt::Debug> C60<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
@@ -46,7 +46,7 @@ impl<F: Float> TBridgeGlobal for C60Center<F> {
 }
 
 /// C60Center
-impl<F: Float> C60Center<F> {
+impl<F: Float + std::fmt::Debug> C60Center<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {

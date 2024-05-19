@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Dodecahedron<F> {
 }
 
 /// Dodecahedron
-impl<F: Float> Dodecahedron<F> {
+impl<F: Float + std::fmt::Debug> Dodecahedron<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
@@ -46,7 +46,7 @@ impl<F: Float> TBridgeGlobal for DodecahedronCenter<F> {
 }
 
 /// DodecahedronCenter
-impl<F: Float> DodecahedronCenter<F> {
+impl<F: Float + std::fmt::Debug> DodecahedronCenter<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {

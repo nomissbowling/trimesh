@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Revolution<F> {
 }
 
 /// Revolution
-impl<F: Float + std::fmt::Debug> Revolution<F> {
+impl<F: Float + std::fmt::Debug> Revolution<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - fo: (bottom, top) false: fixed end, true: open end
   /// - tf: true: on the one texture, false: texture each face

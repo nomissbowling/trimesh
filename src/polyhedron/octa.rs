@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Octa<F> {
 }
 
 /// Octa
-impl<F: Float + std::fmt::Debug> Octa<F> {
+impl<F: Float + std::fmt::Debug> Octa<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {

@@ -22,7 +22,7 @@ impl<F: Float> TBridgeGlobal for Tube<F> {
 }
 
 /// Tube
-impl<F: Float + std::fmt::Debug> Tube<F> {
+impl<F: Float + std::fmt::Debug> Tube<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - odm: outer diameter
   /// - idm: inner diameter
