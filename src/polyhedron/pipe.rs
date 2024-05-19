@@ -31,7 +31,7 @@ impl<F: Float + std::fmt::Debug> Tube<F> where F: std::iter::Sum {
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, odm: F, idm: F, l: F, q: u16, tf: bool) {
     let e = ph_faces::pipe::Tube::new(odm, idm, l, q);
-    self.ph.from_phf(&e.ph.with_uv(tf));
+    self.ph.from_polyhedron(&e.ph, tf);
   }
 }
 
@@ -61,6 +61,6 @@ impl<F: Float + std::fmt::Debug> HalfPipe<F> where F: std::iter::Sum {
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, a: F, odm: F, idm: F, l: F, q: u16, tf: bool) {
     let e = ph_faces::pipe::HalfPipe::new(a, odm, idm, l, q);
-    self.ph.from_phf(&e.ph.with_uv(tf));
+    self.ph.from_polyhedron(&e.ph, tf);
   }
 }

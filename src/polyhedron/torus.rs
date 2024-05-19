@@ -26,7 +26,7 @@ impl<F: Float + std::fmt::Debug> Torus<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, r: F, p: u16, q: u16, tf: bool) {
-    self.ph.from_phf(&ph_faces::torus::Torus::new(c, r, p, q).ph.with_uv(tf));
+    self.ph.from_polyhedron(&ph_faces::torus::Torus::new(c, r, p, q).ph, tf);
   }
 }
 
@@ -50,7 +50,7 @@ impl<F: Float + std::fmt::Debug> RTorus<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, r: F, p: u16, q: u16, tf: bool) {
-    self.ph.from_phf(&ph_faces::torus::RTorus::new(c, r, p, q).ph.with_uv(tf));
+    self.ph.from_polyhedron(&ph_faces::torus::RTorus::new(c, r, p, q).ph, tf);
   }
 }
 
@@ -74,6 +74,6 @@ impl<F: Float + std::fmt::Debug> Ring<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, c: F, d: F, e: F, p: u16, q: u16, tf: bool) {
-    self.ph.from_phf(&ph_faces::torus::Ring::new(c, d, e, p, q).ph.with_uv(tf));
+    self.ph.from_polyhedron(&ph_faces::torus::Ring::new(c, d, e, p, q).ph, tf);
   }
 }

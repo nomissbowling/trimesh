@@ -29,7 +29,7 @@ impl<F: Float + std::fmt::Debug> Revolution<F> where F: std::iter::Sum {
   pub fn setup<Func>(&mut self, r: F, p: u16, q: u16, fo: (bool, bool),
     f: Func, tf: bool) where Func: FnMut(u16, u16) -> (F, F) { // mut f
     let e = ph_faces::revolution::Revolution::new(r, p, q, fo, f);
-    self.ph.from_phf(&e.ph.with_uv(tf));
+    self.ph.from_polyhedron(&e.ph, tf);
   }
   /// make trimeshvi and convexfvp
   /// - fo: (bottom, top) false: fixed end, true: open end
@@ -37,6 +37,6 @@ impl<F: Float + std::fmt::Debug> Revolution<F> where F: std::iter::Sum {
   pub fn setup_from_tbl(&mut self, r: F, p: u16, q: u16, fo: (bool, bool),
     tbl: &Vec<(F, F)>, tf: bool) {
     let e = ph_faces::revolution::Revolution::from_tbl(r, p, q, fo, tbl);
-    self.ph.from_phf(&e.ph.with_uv(tf));
+    self.ph.from_polyhedron(&e.ph, tf);
   }
 }

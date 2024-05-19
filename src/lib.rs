@@ -1,4 +1,4 @@
-#![doc(html_root_url = "https://docs.rs/trimesh/0.4.0")]
+#![doc(html_root_url = "https://docs.rs/trimesh/0.4.1")]
 //! Polyhedron on the ODE (Open Dynamics Engine) trimesh for Rust
 //!
 

@@ -52,7 +52,7 @@ pub struct Polyhedron<F: Float> {
 /// Polyhedron
 impl<F: Float> Polyhedron<F> {
   /// constructor
-  fn void() -> Self {
+  pub fn void() -> Self {
     let tmv = Polyhedron::<F>::void_tmv();
     let fvp = Polyhedron::<F>::void_fvp();
     let vol = <F>::from(0).unwrap();
@@ -86,8 +86,15 @@ impl<F: Float> Polyhedron<F> {
       vtx: 0 as *mut dReal,
       polygons: 0 as *mut u32}
   }
+  /// polyhedron from fullerene::polyhedron::Polyhedron
+  pub fn from_polyhedron(&mut self,
+    ph: &fullerene::polyhedron::Polyhedron<F>, tf: bool) {
+    self.from_phf(&ph.with_uv(tf));
+    self.vol = ph.vol;
+//    self.r = <F>::from(1).unwrap(); // TODO: must re calc
+  }
   /// polyhedron from PHF
-  fn from_phf(&mut self, phf: &fullerene::PHF<F>) {
+  pub fn from_phf(&mut self, phf: &fullerene::PHF<F>) {
     self.indices.clear();
     self.planes.clear();
     self.vtx.clear();
@@ -124,15 +131,15 @@ impl<F: Float> Polyhedron<F> {
 */
     self.tmv = self.to_trimeshvi();
     self.fvp = self.to_convexfvp();
-//    self.vol = <F>::from(0).unwrap(); // must re calc
-//    self.r = <F>::from(1).unwrap(); // must re calc
+//    self.vol = <F>::from(0).unwrap(); // TODO: must re calc
+//    self.r = <F>::from(1).unwrap(); // TODO: must re calc
   }
   /// to trimeshvi
-  fn to_trimeshvi(&mut self) -> trimeshvi {
+  pub fn to_trimeshvi(&mut self) -> trimeshvi {
     trimeshvi::new(&mut self.vtx, &mut self.indices)
   }
   /// to convexfvp
-  fn to_convexfvp(&mut self) -> convexfvp {
+  pub fn to_convexfvp(&mut self) -> convexfvp {
     convexfvp::new(&mut self.planes, &mut self.vtx, &mut self.polygons)
   }
 }

@@ -26,7 +26,7 @@ impl<F: Float + std::fmt::Debug> C60<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::C60::new(r).ph.with_uv(tf));
+    self.ph.from_polyhedron(&fullerene::C60::new(r).ph, tf);
   }
 }
 
@@ -50,6 +50,6 @@ impl<F: Float + std::fmt::Debug> C60Center<F> where F: std::iter::Sum {
   /// make trimeshvi and convexfvp
   /// - tf: true: on the one texture, false: texture each face
   pub fn setup(&mut self, r: F, tf: bool) {
-    self.ph.from_phf(&fullerene::C60Center::new(r).ph.with_uv(tf));
+    self.ph.from_polyhedron(&fullerene::C60Center::new(r).ph, tf);
   }
 }
