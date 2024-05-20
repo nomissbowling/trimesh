@@ -6,6 +6,30 @@ use num::Float;
 
 use crate::polyhedron::*;
 
+/// Cuboid
+#[derive(Debug, Clone)]
+pub struct Cuboid<F: Float> {
+  /// polyhedron
+  pub ph: Polyhedron<F>
+}
+
+/// TBridgeGlobal for Cuboid
+impl<F: Float> TBridgeGlobal for Cuboid<F> {
+  /// constructor
+  fn void() -> Self {
+    Cuboid::<F>{ph: Polyhedron::<F>::void()}
+  }
+}
+
+/// Cuboid
+impl<F: Float + std::fmt::Debug> Cuboid<F> where F: std::iter::Sum {
+  /// make trimeshvi and convexfvp
+  /// - tf: true: on the one texture, false: texture each face
+  pub fn setup(&mut self, lxyz: [F; 3], tf: bool) {
+    self.ph.from_polyhedron(&ph_faces::cube::Cuboid::new(lxyz).ph, tf);
+  }
+}
+
 /// Cube
 #[derive(Debug, Clone)]
 pub struct Cube<F: Float> {
